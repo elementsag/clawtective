@@ -8,6 +8,7 @@ import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 
 const BSC_TESTNET_RPC = "https://bsc-testnet.publicnode.com"; 
 
+// Create config outside of render to prevent multiple initializations
 const config = createConfig(
   getDefaultConfig({
     chains: [bscTestnet],
@@ -22,6 +23,7 @@ const config = createConfig(
   }),
 );
 
+// Create queryClient outside of render
 const queryClient = new QueryClient();
 
 export const Web3Provider = ({ children }: { children: React.ReactNode }) => {

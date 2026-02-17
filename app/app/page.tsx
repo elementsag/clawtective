@@ -2,13 +2,25 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useAccount, useBalance, useSendTransaction, useWaitForTransactionReceipt, useSwitchChain } from 'wagmi';
+import { useAccount, useBalance, useWriteContract, useWaitForTransactionReceipt, useSwitchChain } from 'wagmi';
 import { ConnectKitButton } from 'connectkit';
 import { parseEther, formatEther } from 'viem';
 import { bscTestnet } from 'wagmi/chains';
 
-const PAYMENT_RECIPIENT = "0x46BE9Cd0417fd639E5baEb3A3E8788C47eA3281f"; 
+// Contract Address on BSC Testnet
+const CONTRACT_ADDRESS = "0xe59C43c382cFb362dD9b4473dEB6dd1E72d3106F"; 
 const COST_PER_MESSAGE = "0.0001"; // 0.0001 BNB
+
+// Contract ABI - only the deposit function we need
+const CONTRACT_ABI = [
+  {
+    type: 'function',
+    name: 'deposit',
+    stateMutability: 'payable',
+    inputs: [],
+    outputs: [],
+  }
+] as const;
 
 export default function Page() {
   const account = useAccount();
@@ -39,7 +51,7 @@ export default function Page() {
     address: address,
   });
 
-  const { data: hash, sendTransaction, isPending, error: writeError } = useSendTransaction();
+  const { data: hash, writeContract, isPending, error: writeError } = useWriteContract();
   
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
@@ -120,17 +132,21 @@ export default function Page() {
         }
     }, 100);
 
-    // Trigger Native BNB Payment
+    // Trigger Contract Deposit
     try {
         const amount = parseEther(COST_PER_MESSAGE);
-        console.log("Sending Transaction:", {
-            to: PAYMENT_RECIPIENT,
+        
+        console.log("Calling Contract Deposit:", {
+            address: CONTRACT_ADDRESS,
+            functionName: 'deposit',
             value: amount.toString(),
             chainId: bscTestnet.id
         });
 
-        sendTransaction({
-            to: PAYMENT_RECIPIENT,
+        writeContract({
+            address: CONTRACT_ADDRESS,
+            abi: CONTRACT_ABI,
+            functionName: 'deposit',
             value: amount, 
             chainId: bscTestnet.id,
         });
