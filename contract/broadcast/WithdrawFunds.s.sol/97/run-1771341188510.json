@@ -1,0 +1,29 @@
+{
+  "transactions": [
+    {
+      "hash": null,
+      "transactionType": "CREATE",
+      "contractName": "WithdrawFunds",
+      "contractAddress": "0x5b73c5498c1e3b4dba84de0f1833c4a029d90519",
+      "function": null,
+      "arguments": null,
+      "transaction": {
+        "from": "0x1804c8ab1f12e6bbf3894d4083f33e07309d1f38",
+        "gas": "0x37d77",
+        "value": "0x0",
+        "input": "0x608060405234801561000f575f80fd5b50335f806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506101cc8061005c5f395ff3fe608060405260043610610028575f3560e01c80633ccfd60b1461002c5780638da5cb5b14610036575b5f80fd5b610034610060565b005b348015610041575f80fd5b5061004a61011b565b604051610057919061017d565b60405180910390f35b5f8054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146100b6575f80fd5b5f8054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc4790811502906040515f60405180830381858888f19350505050158015610118573d5f803e3d5ffd5b50565b5f8054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b5f73ffffffffffffffffffffffffffffffffffffffff82169050919050565b5f6101678261013e565b9050919050565b6101778161015d565b82525050565b5f6020820190506101905f83018461016e565b9291505056fea264697066735822122017c06766b48f32007869b39d14d85aa56fd4669294f74fc2459b2f3bc4b3f9cb64736f6c63430008180033",
+        "nonce": "0x0",
+        "chainId": "0x61"
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [],
+  "libraries": [],
+  "pending": [],
+  "returns": {},
+  "timestamp": 1771341188510,
+  "chain": 97,
+  "commit": null
+}
