@@ -185,7 +185,7 @@ export default function Page() {
                             <>
                                 <div className="flex flex-col items-end border-r-2 border-[#ffcc00]/30 pr-4">
                                     <span className="text-[10px] text-[#ffcc00]/70">BALANCE</span>
-                                    <span className="font-bold text-white">{parseFloat(balanceData.formatted).toFixed(4)} {balanceData.symbol}</span>
+                                    <span className="font-bold text-white">{parseFloat(formatEther(balanceData.value)).toFixed(4)} {balanceData.symbol}</span>
                                 </div>
                                 <div className="text-xs font-bold text-[#ffcc00]">COST: {COST_PER_MESSAGE} BNB / MSG</div>
                             </>
